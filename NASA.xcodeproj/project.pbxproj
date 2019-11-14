@@ -18,6 +18,7 @@
 		E78B7FCC237D816B009F5317 /* CustomInteractiveTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78B7FCB237D816B009F5317 /* CustomInteractiveTransition.swift */; };
 		E78B7FCE237D818D009F5317 /* CustomNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78B7FCD237D818D009F5317 /* CustomNavigationController.swift */; };
 		E78B7FD2237D88E6009F5317 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78B7FD1237D88E6009F5317 /* InfoViewController.swift */; };
+		E78B7FD5237DA258009F5317 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78B7FD4237DA258009F5317 /* NetworkService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		E78B7FCB237D816B009F5317 /* CustomInteractiveTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomInteractiveTransition.swift; sourceTree = "<group>"; };
 		E78B7FCD237D818D009F5317 /* CustomNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationController.swift; sourceTree = "<group>"; };
 		E78B7FD1237D88E6009F5317 /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
+		E78B7FD4237DA258009F5317 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -163,6 +165,7 @@
 		E78B7FD3237D938B009F5317 /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				E78B7FD4237DA258009F5317 /* NetworkService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -294,6 +297,7 @@
 				E78B7FC8237D80FF009F5317 /* CustomPushAnimator.swift in Sources */,
 				E78B7FCC237D816B009F5317 /* CustomInteractiveTransition.swift in Sources */,
 				E78B7FB1237D51E4009F5317 /* RootViewController.swift in Sources */,
+				E78B7FD5237DA258009F5317 /* NetworkService.swift in Sources */,
 				E78B7FCA237D8129009F5317 /* CustomPopAnimator.swift in Sources */,
 				E78B7FAD237D51E4009F5317 /* AppDelegate.swift in Sources */,
 				E78B7FD2237D88E6009F5317 /* InfoViewController.swift in Sources */,
