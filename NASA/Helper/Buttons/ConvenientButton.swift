@@ -1,21 +1,15 @@
-//
-//  ConvenientButton.swift
-//  NASA
-//
-//  Created by Владимир on 16/11/2019.
-//  Copyright © 2019 nva. All rights reserved.
-//
-
 import UIKit
 
 class ConvenientButton: UIButton {
+    
+    var offset: CGFloat = 10
 
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
+    override func point(inside point: CGPoint, with event: UIEvent?) -> Bool {
+        let newArea = CGRect(x: self.bounds.origin.x - offset,
+                              y: self.bounds.origin.y - offset,
+                              width: self.bounds.width + offset*2,
+                              height: self.bounds.height + offset*2)
+        return newArea.contains(point)
     }
-    */
 
 }
