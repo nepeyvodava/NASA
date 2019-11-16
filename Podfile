@@ -8,5 +8,7 @@ target 'NASA' do
   # Pods for NASA
   pod 'Moya'
   pod 'SnapKit', '~> 5.0.0'
+  pod 'SwiftyJSON'
+  pod 'Kingfisher'
 
 end
