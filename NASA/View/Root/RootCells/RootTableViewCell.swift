@@ -37,6 +37,7 @@ class RootTableViewCell: UITableViewCell {
     }()
 
     func configure(item: Item) {
+        imageV.kf.indicatorType = .activity
         imageV.kf.setImage(with: URL(string: item.pic))
         label.text = item.title
     }
