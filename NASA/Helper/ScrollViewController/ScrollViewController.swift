@@ -1,30 +1,30 @@
-//
-//  ScrollViewController.swift
-//  NASA
-//
-//  Created by Владимир on 15/11/2019.
-//  Copyright © 2019 nva. All rights reserved.
-//
-
 import UIKit
+import SnapKit
 
 class ScrollViewController: UIViewController {
+    
+    let scrollView = UIScrollView()
+    
+    let contentView = UIView()
 
+    //MARK: - View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        view.addSubview(scrollView)
+        scrollView.addSubview(contentView)
+        
+        scrollView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+        
+        contentView.snp.makeConstraints { make in
+            make.width.edges.equalToSuperview()
+        }
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    override var prefersStatusBarHidden: Bool {
+        return true
     }
-    */
-
+    
 }
