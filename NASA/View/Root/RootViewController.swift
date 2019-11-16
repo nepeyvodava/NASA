@@ -4,7 +4,10 @@ import SwiftyJSON
 
 class RootViewController: UITableViewController {
     
+    //MARK: - Variables
     var data = [Item]()
+    
+    weak var searchBar: UISearchBar?
     
     let provider = Network.provider
     
@@ -12,10 +15,10 @@ class RootViewController: UITableViewController {
     
     let rawHeight: CGFloat = 80
 
+    //MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        searchData(q: "")
+
         setupView()
     }
     
@@ -24,7 +27,20 @@ class RootViewController: UITableViewController {
         guard let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: HeaderSearch.reuseID) as? HeaderSearch
             else { return UIView(frame: .zero) }
         header.searchBar.delegate = self
+        searchBar = header.searchBar
         return header
+    }
+    
+    override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        guard data.isEmpty,
+            let footer = tableView.dequeueReusableHeaderFooterView(withIdentifier: FooterRoot.reuseID) as? FooterRoot
+            else { return UIView(frame: .zero) }
+        
+        searchBarIsEmpty() ?
+            footer.configure(title: "Please, enter query.")
+            : footer.configure(title: "Sorry, nothing found. Enter another query.")
+        
+        return footer
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -90,6 +106,10 @@ extension RootViewController: UISearchBarDelegate {
         searchBar.endEditing(true)
     }
     
+    func searchBarIsEmpty() -> Bool {
+        return searchBar?.text?.isEmpty ?? true
+    }
+    
 }
 
 //MARK: - setup
@@ -111,24 +131,6 @@ private extension RootViewController {
             case .failure(let error):
                 self.showAlert(error: error)
             }
-            
-            //            switch result {
-            //            case .success(let response):
-            //                let result = try! JSONSerialization.jsonObject(with: response.data, options: .mutableContainers)
-            //                print(result)
-            //            case .failure(let error):
-            //                print(error.localizedDescription)
-            //            }
-            
-            //            switch result {
-            //            case .success(let response):
-            //                let json = JSON(response.data)
-            //                let result = json["collection"]["items"][0]
-            //                print(result)
-            //            case .failure(let error):
-            //                print(error.localizedDescription)
-            //            }
-            
         }
     }
     
@@ -139,6 +141,7 @@ private extension RootViewController {
         tableView.dataSource = self
         
         tableView.register(HeaderSearch.self, forHeaderFooterViewReuseIdentifier: HeaderSearch.reuseID)
+        tableView.register(FooterRoot.self, forHeaderFooterViewReuseIdentifier: FooterRoot.reuseID)
         tableView.register(RootTableViewCell.self, forCellReuseIdentifier: RootTableViewCell.reuseID)
     }
     
