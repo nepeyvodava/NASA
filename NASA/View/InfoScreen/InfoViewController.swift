@@ -2,6 +2,7 @@ import UIKit
 
 class InfoViewController: UIViewController {
     
+    //MARK: - Variables
     private var item: Item?
     
     private let line: UIView = {
@@ -61,6 +62,7 @@ class InfoViewController: UIViewController {
         self.item = item
     }
     
+    //MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
@@ -69,33 +71,9 @@ class InfoViewController: UIViewController {
 }
 
 
+//MARK: - setup
 private extension InfoViewController {
-    
-//    func setupView() {
-//        view.backgroundColor = .groupTableViewBackground
-//        title = "Details"
-//        view.addSubviews([label, imageV, info])
-//
-//        let offset: CGFloat = 5
-//
-//        label.snp.makeConstraints { make in
-//            make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
-//            make.left.right.equalToSuperview().inset(offset)
-//            make.height.equalTo(40)
-//        }
-//
-//        imageV.snp.makeConstraints { make in
-//            make.top.equalTo(label.snp.bottom)
-//            make.left.right.equalToSuperview().inset(offset)
-//            make.height.equalTo(Assets.screenHeight * 0.4)
-//        }
-//
-//        info.snp.makeConstraints { make in
-//            make.top.equalTo(imageV.snp.bottom).offset(offset)
-//            make.left.right.bottom.equalToSuperview().inset(offset)
-//        }
-//    }
-    
+        
     func setupView() {
         view.backgroundColor = .groupTableViewBackground
         title = "Details"
@@ -121,7 +99,7 @@ private extension InfoViewController {
         
         imageV.snp.makeConstraints { make in
             make.left.right.top.equalToSuperview()
-            make.height.equalTo(Assets.screenHeight * 0.4)
+            make.height.equalToSuperview().multipliedBy(0.4)
         }
         
         imageButton.snp.makeConstraints { make in
@@ -143,7 +121,7 @@ private extension InfoViewController {
         guard let id = self.item?.nasa_id else { return }
         let originalVC = OriginalViewController()
         originalVC.configure(id: id)
-        originalVC.modalPresentationStyle = .fullScreen
+        originalVC.modalPresentationStyle = .popover
         present(originalVC, animated: true, completion: nil)
     }
     
