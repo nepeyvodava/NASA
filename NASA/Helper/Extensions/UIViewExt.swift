@@ -1,9 +1,9 @@
-//
-//  UIViewExt.swift
-//  NASA
-//
-//  Created by Владимир on 15/11/2019.
-//  Copyright © 2019 nva. All rights reserved.
-//
+import UIKit
 
-import Foundation
+extension UIView {
+
+    func addSubviews(_ views: [UIView]) {
+        views.forEach { self.addSubview($0) }
+    }
+    
+}
