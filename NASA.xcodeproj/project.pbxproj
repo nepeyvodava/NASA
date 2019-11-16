@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		87366164648E561E8A1AD8DE /* Pods_NASA.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6798A4FE86A7C9F243301B3 /* Pods_NASA.framework */; };
 		E718F74A238071500081452C /* FooterRoot.swift in Sources */ = {isa = PBXBuildFile; fileRef = E718F749238071500081452C /* FooterRoot.swift */; };
+		E718F74D2380810C0081452C /* TransitionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E718F74C2380810C0081452C /* TransitionManager.swift */; };
+		E718F74F238081870081452C /* InfoPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E718F74E238081870081452C /* InfoPresentationController.swift */; };
 		E78B7FAD237D51E4009F5317 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78B7FAC237D51E4009F5317 /* AppDelegate.swift */; };
 		E78B7FB1237D51E4009F5317 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78B7FB0237D51E4009F5317 /* RootViewController.swift */; };
 		E78B7FB6237D51E9009F5317 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E78B7FB5237D51E9009F5317 /* Assets.xcassets */; };
@@ -39,6 +41,8 @@
 		D936793AB19255C899524562 /* Pods-NASA.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NASA.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NASA/Pods-NASA.debug.xcconfig"; sourceTree = "<group>"; };
 		E0EC5A08A0F2492374597243 /* Pods-NASA.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NASA.release.xcconfig"; path = "Pods/Target Support Files/Pods-NASA/Pods-NASA.release.xcconfig"; sourceTree = "<group>"; };
 		E718F749238071500081452C /* FooterRoot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FooterRoot.swift; sourceTree = "<group>"; };
+		E718F74C2380810C0081452C /* TransitionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionManager.swift; sourceTree = "<group>"; };
+		E718F74E238081870081452C /* InfoPresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoPresentationController.swift; sourceTree = "<group>"; };
 		E78B7FA9237D51E4009F5317 /* NASA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NASA.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E78B7FAC237D51E4009F5317 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E78B7FB0237D51E4009F5317 /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
@@ -93,6 +97,15 @@
 				E0EC5A08A0F2492374597243 /* Pods-NASA.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		E718F74B238080FB0081452C /* TransitionManager */ = {
+			isa = PBXGroup;
+			children = (
+				E718F74C2380810C0081452C /* TransitionManager.swift */,
+				E718F74E238081870081452C /* InfoPresentationController.swift */,
+			);
+			path = TransitionManager;
 			sourceTree = "<group>";
 		};
 		E78B7FA0237D51E4009F5317 = {
@@ -150,6 +163,7 @@
 		E78B7FC4237D8015009F5317 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				E718F74B238080FB0081452C /* TransitionManager */,
 				E78B7FFB238061B6009F5317 /* Views */,
 				E78B7FE6237EAE48009F5317 /* Assets.swift */,
 				E78B7FF8237FE4C2009F5317 /* Buttons */,
@@ -379,6 +393,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E78B7FC8237D80FF009F5317 /* CustomPushAnimator.swift in Sources */,
+				E718F74D2380810C0081452C /* TransitionManager.swift in Sources */,
 				E78B7FE5237EA8FB009F5317 /* UIColorExt.swift in Sources */,
 				E78B7FED237EE1F9009F5317 /* GCD.swift in Sources */,
 				E78B7FCC237D816B009F5317 /* CustomInteractiveTransition.swift in Sources */,
@@ -391,6 +406,7 @@
 				E78B7FF4237F0F88009F5317 /* OriginalViewController.swift in Sources */,
 				E78B7FFD238061DD009F5317 /* ZoomImageView.swift in Sources */,
 				E78B7FF1237F0AA3009F5317 /* PhotoResponse.swift in Sources */,
+				E718F74F238081870081452C /* InfoPresentationController.swift in Sources */,
 				E78B7FE7237EAE48009F5317 /* Assets.swift in Sources */,
 				E78B7FEF237F0468009F5317 /* UIViewControllerExt.swift in Sources */,
 				E78B7FEB237EDA06009F5317 /* HeaderSearch.swift in Sources */,
