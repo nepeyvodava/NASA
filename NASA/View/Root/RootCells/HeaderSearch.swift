@@ -1,21 +1,37 @@
-//
-//  HeaderSearch.swift
-//  NASA
-//
-//  Created by Владимир on 15/11/2019.
-//  Copyright © 2019 nva. All rights reserved.
-//
-
 import UIKit
 
 class HeaderSearch: UITableViewHeaderFooterView {
 
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
+    static let reuseID = String(describing: HeaderSearch.self)
+    
+    let searchBar: UISearchBar = {
+        let sBar = UISearchBar()
+        sBar.showsCancelButton = true
+        sBar.placeholder = "search"
+        sBar.tintColor = .red
+        return sBar
+    }()
+    
+    override init(reuseIdentifier: String?) {
+        super.init(reuseIdentifier: reuseIdentifier)
+        setupView()
     }
-    */
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        setupView()
+    }
+    
+}
 
+ 
+private extension HeaderSearch {
+    
+    func setupView() {
+        addSubview(searchBar)
+        searchBar.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+    }
+    
 }
