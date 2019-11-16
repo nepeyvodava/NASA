@@ -1,30 +1,95 @@
-//
-//  OriginalVC.swift
-//  NASA
-//
-//  Created by Владимир on 15/11/2019.
-//  Copyright © 2019 nva. All rights reserved.
-//
-
 import UIKit
+import Kingfisher
 
-class OriginalViewController: UIViewController {
+class OriginalViewController: ScrollViewController {
+    
+    let provider = Network.provider
+    
+    let imageV: UIImageView = {
+        let imgV = UIImageView()
+        imgV.contentMode = .scaleAspectFit
+        imgV.backgroundColor = .black
+        return imgV
+    }()
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+    private let closeBtn: ConvenientButton = {
+        let btn = ConvenientButton()
+        btn.setImage(UIImage(named: "cross_btn"), for: .normal)
+        btn.backgroundColor = .clear
+        btn.addTarget(self, action: #selector(closeBtnPressed(_:)), for: .touchUpInside)
+        return btn
+    }()
+    
+    func configure(id: String) {
+        provider.request(.fetchPhoto(id: id)) { [weak self] result in
+            guard let self = self else { return }
+            
+            switch result {
+            case .success(let response):
+                do {
+                    let collection = try JSONDecoder().decode(PhotoResponse.self, from: response.data)
+                    let pic = collection.original
+                    self.imageV.kf.indicatorType = .activity
+                    self.imageV.kf.setImage(with: URL(string: pic))
+                } catch(let error) {
+                    self.showAlert(error: error)
+                }
+            case .failure(let error):
+                self.showAlert(error: error)
+            }
+        }
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setupView()
     }
-    */
 
+}
+
+
+extension OriginalViewController: UIScrollViewDelegate {
+    
+    func viewForZooming(in scrollView: UIScrollView) -> UIView? {
+        return imageV
+    }
+    
+}
+
+
+private extension OriginalViewController {
+    
+    func setupView() {
+        scrollView.delegate = self
+        scrollView.minimumZoomScale = 1
+        scrollView.maximumZoomScale = 10.0
+        scrollView.backgroundColor = .black
+        
+//        scrollView.alwaysBounceVertical = false
+//        scrollView.alwaysBounceHorizontal = false
+//        scrollView.showsVerticalScrollIndicator = true
+//        scrollView.flashScrollIndicators()
+        
+        view.backgroundColor = .black
+        view.addSubview(closeBtn)
+        
+        closeBtn.snp.makeConstraints { make in
+            make.top.right.equalToSuperview().inset(10)
+            make.height.width.equalTo(20)
+        }
+        
+        contentView.addSubview(imageV)
+//        scrollView.addSubview(imageV)
+        
+        imageV.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+            make.height.equalTo(Assets.screenHeight)
+            make.width.equalTo(Assets.screenWidth)
+        }
+    }
+    
+    @objc func closeBtnPressed(_ sender: UIButton) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
 }
