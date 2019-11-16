@@ -2,7 +2,7 @@ import UIKit
 import Moya
 import SwiftyJSON
 
-class RootViewController: UITableViewController {
+class RootTableViewController: UITableViewController {
     
     //MARK: - Variables
     private let transitionManager = TransitionManager()
@@ -22,6 +22,24 @@ class RootViewController: UITableViewController {
         super.viewDidLoad()
 
         setupView()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if #available(iOS 13, *)
+        {
+            guard let frame = UIApplication.shared.keyWindow?.windowScene?.statusBarManager?.statusBarFrame
+                else { return }
+            let statusBar = UIView(frame: frame)
+            statusBar.backgroundColor = UIColor.systemBackground
+            UIApplication.shared.keyWindow?.addSubview(statusBar)
+        } else {
+            let statusBar = UIApplication.shared.value(forKey: "statusBar") as! UIView
+               
+            if statusBar.responds(to: #selector(setter: UIView.backgroundColor)) {
+                statusBar.backgroundColor = self.tableView.backgroundColor }
+        }
     }
     
     
@@ -82,7 +100,7 @@ class RootViewController: UITableViewController {
 
 
 //MARK: - UISearchBarDelegate
-extension RootViewController: UISearchBarDelegate {
+extension RootTableViewController: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         let task = DispatchWorkItem {
@@ -114,7 +132,7 @@ extension RootViewController: UISearchBarDelegate {
 
 
 //MARK: - Actions
-private extension RootViewController {
+private extension RootTableViewController {
     
     func searchData(q: String) {
         provider.request(.searchPhotos(q: q)) { [weak self] (result) in
@@ -148,11 +166,11 @@ private extension RootViewController {
 
 
 //MARK: - setup
-private extension RootViewController {
+private extension RootTableViewController {
     
     func setupView() {
         tableView.separatorStyle = .none
-
+        
         tableView.delegate = self
         tableView.dataSource = self
         
