@@ -7,12 +7,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         window = UIWindow(frame: UIScreen.main.bounds)
-        
-        let nav = CustomNavigationController()
-        let rootVC = RootViewController()
-        nav.viewControllers = [rootVC]
 
-        window!.rootViewController = nav
+        let rootVC = RootViewController()
+        window!.rootViewController = rootVC
         window!.makeKeyAndVisible()
         return true
     }
