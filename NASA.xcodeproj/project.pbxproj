@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		87366164648E561E8A1AD8DE /* Pods_NASA.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6798A4FE86A7C9F243301B3 /* Pods_NASA.framework */; };
+		E718F74A238071500081452C /* FooterRoot.swift in Sources */ = {isa = PBXBuildFile; fileRef = E718F749238071500081452C /* FooterRoot.swift */; };
 		E78B7FAD237D51E4009F5317 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78B7FAC237D51E4009F5317 /* AppDelegate.swift */; };
 		E78B7FB1237D51E4009F5317 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78B7FB0237D51E4009F5317 /* RootViewController.swift */; };
 		E78B7FB6237D51E9009F5317 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E78B7FB5237D51E9009F5317 /* Assets.xcassets */; };
@@ -37,6 +38,7 @@
 		D6798A4FE86A7C9F243301B3 /* Pods_NASA.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NASA.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D936793AB19255C899524562 /* Pods-NASA.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NASA.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NASA/Pods-NASA.debug.xcconfig"; sourceTree = "<group>"; };
 		E0EC5A08A0F2492374597243 /* Pods-NASA.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NASA.release.xcconfig"; path = "Pods/Target Support Files/Pods-NASA/Pods-NASA.release.xcconfig"; sourceTree = "<group>"; };
+		E718F749238071500081452C /* FooterRoot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FooterRoot.swift; sourceTree = "<group>"; };
 		E78B7FA9237D51E4009F5317 /* NASA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NASA.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E78B7FAC237D51E4009F5317 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E78B7FB0237D51E4009F5317 /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
@@ -208,6 +210,7 @@
 			children = (
 				E78B7FDC237E906F009F5317 /* RootTableViewCell.swift */,
 				E78B7FEA237EDA06009F5317 /* HeaderSearch.swift */,
+				E718F749238071500081452C /* FooterRoot.swift */,
 			);
 			path = RootCells;
 			sourceTree = "<group>";
@@ -381,6 +384,7 @@
 				E78B7FCC237D816B009F5317 /* CustomInteractiveTransition.swift in Sources */,
 				E78B7FB1237D51E4009F5317 /* RootViewController.swift in Sources */,
 				E78B7FDB237DC7EB009F5317 /* SearchResponse.swift in Sources */,
+				E718F74A238071500081452C /* FooterRoot.swift in Sources */,
 				E78B7FD5237DA258009F5317 /* NetworkService.swift in Sources */,
 				E78B7FE1237E94BB009F5317 /* UIViewExt.swift in Sources */,
 				E78B7FCA237D8129009F5317 /* CustomPopAnimator.swift in Sources */,
