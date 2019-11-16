@@ -15,10 +15,6 @@
 		E78B7FB1237D51E4009F5317 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78B7FB0237D51E4009F5317 /* RootViewController.swift */; };
 		E78B7FB6237D51E9009F5317 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E78B7FB5237D51E9009F5317 /* Assets.xcassets */; };
 		E78B7FB9237D51E9009F5317 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E78B7FB7237D51E9009F5317 /* LaunchScreen.storyboard */; };
-		E78B7FC8237D80FF009F5317 /* CustomPushAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78B7FC7237D80FF009F5317 /* CustomPushAnimator.swift */; };
-		E78B7FCA237D8129009F5317 /* CustomPopAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78B7FC9237D8129009F5317 /* CustomPopAnimator.swift */; };
-		E78B7FCC237D816B009F5317 /* CustomInteractiveTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78B7FCB237D816B009F5317 /* CustomInteractiveTransition.swift */; };
-		E78B7FCE237D818D009F5317 /* CustomNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78B7FCD237D818D009F5317 /* CustomNavigationController.swift */; };
 		E78B7FD2237D88E6009F5317 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78B7FD1237D88E6009F5317 /* InfoViewController.swift */; };
 		E78B7FD5237DA258009F5317 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78B7FD4237DA258009F5317 /* NetworkService.swift */; };
 		E78B7FDB237DC7EB009F5317 /* SearchResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78B7FDA237DC7EB009F5317 /* SearchResponse.swift */; };
@@ -49,10 +45,6 @@
 		E78B7FB5237D51E9009F5317 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E78B7FB8237D51E9009F5317 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E78B7FBA237D51E9009F5317 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E78B7FC7237D80FF009F5317 /* CustomPushAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPushAnimator.swift; sourceTree = "<group>"; };
-		E78B7FC9237D8129009F5317 /* CustomPopAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPopAnimator.swift; sourceTree = "<group>"; };
-		E78B7FCB237D816B009F5317 /* CustomInteractiveTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomInteractiveTransition.swift; sourceTree = "<group>"; };
-		E78B7FCD237D818D009F5317 /* CustomNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationController.swift; sourceTree = "<group>"; };
 		E78B7FD1237D88E6009F5317 /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		E78B7FD4237DA258009F5317 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		E78B7FDA237DC7EB009F5317 /* SearchResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResponse.swift; sourceTree = "<group>"; };
@@ -168,28 +160,8 @@
 				E78B7FE6237EAE48009F5317 /* Assets.swift */,
 				E78B7FF8237FE4C2009F5317 /* Buttons */,
 				E78B7FDF237E940F009F5317 /* Extensions */,
-				E78B7FC5237D80B7009F5317 /* NavidationController */,
 			);
 			path = Helper;
-			sourceTree = "<group>";
-		};
-		E78B7FC5237D80B7009F5317 /* NavidationController */ = {
-			isa = PBXGroup;
-			children = (
-				E78B7FC6237D80E4009F5317 /* Animators */,
-				E78B7FCB237D816B009F5317 /* CustomInteractiveTransition.swift */,
-				E78B7FCD237D818D009F5317 /* CustomNavigationController.swift */,
-			);
-			path = NavidationController;
-			sourceTree = "<group>";
-		};
-		E78B7FC6237D80E4009F5317 /* Animators */ = {
-			isa = PBXGroup;
-			children = (
-				E78B7FC7237D80FF009F5317 /* CustomPushAnimator.swift */,
-				E78B7FC9237D8129009F5317 /* CustomPopAnimator.swift */,
-			);
-			path = Animators;
 			sourceTree = "<group>";
 		};
 		E78B7FCF237D83B6009F5317 /* Root */ = {
@@ -392,17 +364,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E78B7FC8237D80FF009F5317 /* CustomPushAnimator.swift in Sources */,
 				E718F74D2380810C0081452C /* TransitionManager.swift in Sources */,
 				E78B7FE5237EA8FB009F5317 /* UIColorExt.swift in Sources */,
 				E78B7FED237EE1F9009F5317 /* GCD.swift in Sources */,
-				E78B7FCC237D816B009F5317 /* CustomInteractiveTransition.swift in Sources */,
 				E78B7FB1237D51E4009F5317 /* RootViewController.swift in Sources */,
 				E78B7FDB237DC7EB009F5317 /* SearchResponse.swift in Sources */,
 				E718F74A238071500081452C /* FooterRoot.swift in Sources */,
 				E78B7FD5237DA258009F5317 /* NetworkService.swift in Sources */,
 				E78B7FE1237E94BB009F5317 /* UIViewExt.swift in Sources */,
-				E78B7FCA237D8129009F5317 /* CustomPopAnimator.swift in Sources */,
 				E78B7FF4237F0F88009F5317 /* OriginalViewController.swift in Sources */,
 				E78B7FFD238061DD009F5317 /* ZoomImageView.swift in Sources */,
 				E78B7FF1237F0AA3009F5317 /* PhotoResponse.swift in Sources */,
@@ -414,7 +383,6 @@
 				E78B7FAD237D51E4009F5317 /* AppDelegate.swift in Sources */,
 				E78B7FD2237D88E6009F5317 /* InfoViewController.swift in Sources */,
 				E78B7FE9237EBE15009F5317 /* TitleLabel.swift in Sources */,
-				E78B7FCE237D818D009F5317 /* CustomNavigationController.swift in Sources */,
 				E78B7FDD237E906F009F5317 /* RootTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
