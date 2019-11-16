@@ -5,6 +5,8 @@ import SwiftyJSON
 class RootViewController: UITableViewController {
     
     //MARK: - Variables
+    private let transitionManager = TransitionManager()
+    
     var data = [Item]()
     
     weak var searchBar: UISearchBar?
@@ -21,6 +23,7 @@ class RootViewController: UITableViewController {
 
         setupView()
     }
+    
     
     //MARK: - Table DataSource
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -62,10 +65,7 @@ class RootViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         DispatchQueue.main.async {
-            self.tableView.endEditing(true)
-            let toVC = InfoViewController()
-            toVC.configure(item: self.data[indexPath.row])
-            self.present(toVC, animated: true, completion: nil)
+            self.presentData(row: indexPath.row)
         }
     }
     
@@ -112,7 +112,8 @@ extension RootViewController: UISearchBarDelegate {
     
 }
 
-//MARK: - setup
+
+//MARK: - Actions
 private extension RootViewController {
     
     func searchData(q: String) {
@@ -134,9 +135,24 @@ private extension RootViewController {
         }
     }
     
+    func presentData(row: Int) {
+        self.tableView.endEditing(true)
+        let toVC = InfoViewController()
+        toVC.configure(item: self.data[row])
+        toVC.transitioningDelegate = self.transitionManager
+        toVC.modalPresentationStyle = .custom
+        self.present(toVC, animated: true, completion: nil)
+    }
+    
+}
+
+
+//MARK: - setup
+private extension RootViewController {
+    
     func setupView() {
         tableView.separatorStyle = .none
-        
+
         tableView.delegate = self
         tableView.dataSource = self
         
