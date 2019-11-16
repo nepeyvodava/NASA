@@ -1,16 +1,11 @@
 import UIKit
 import Kingfisher
 
-class OriginalViewController: ScrollViewController {
+class OriginalViewController: UIViewController {
     
     let provider = Network.provider
     
-    let imageV: UIImageView = {
-        let imgV = UIImageView()
-        imgV.contentMode = .scaleAspectFit
-        imgV.backgroundColor = .black
-        return imgV
-    }()
+    let imageV = ZoomImageView()
 
     private let closeBtn: ConvenientButton = {
         let btn = ConvenientButton()
@@ -23,14 +18,14 @@ class OriginalViewController: ScrollViewController {
     func configure(id: String) {
         provider.request(.fetchPhoto(id: id)) { [weak self] result in
             guard let self = self else { return }
-            
+
             switch result {
             case .success(let response):
                 do {
                     let collection = try JSONDecoder().decode(PhotoResponse.self, from: response.data)
                     let pic = collection.original
-                    self.imageV.kf.indicatorType = .activity
-                    self.imageV.kf.setImage(with: URL(string: pic))
+                    self.imageV.imageView.kf.indicatorType = .activity
+                    self.imageV.imageView.kf.setImage(with: URL(string: pic))
                 } catch(let error) {
                     self.showAlert(error: error)
                 }
@@ -44,14 +39,15 @@ class OriginalViewController: ScrollViewController {
         super.viewDidLoad()
         setupView()
     }
-
-}
-
-
-extension OriginalViewController: UIScrollViewDelegate {
     
-    func viewForZooming(in scrollView: UIScrollView) -> UIView? {
-        return imageV
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
+
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        
+        imageV.setZoomScale(1, animated: true)
     }
     
 }
@@ -60,31 +56,17 @@ extension OriginalViewController: UIScrollViewDelegate {
 private extension OriginalViewController {
     
     func setupView() {
-        scrollView.delegate = self
-        scrollView.minimumZoomScale = 1
-        scrollView.maximumZoomScale = 10.0
-        scrollView.backgroundColor = .black
-        
-//        scrollView.alwaysBounceVertical = false
-//        scrollView.alwaysBounceHorizontal = false
-//        scrollView.showsVerticalScrollIndicator = true
-//        scrollView.flashScrollIndicators()
-        
         view.backgroundColor = .black
-        view.addSubview(closeBtn)
+        view.addSubviews([imageV, closeBtn])
+        
+        imageV.snp.makeConstraints { make in
+            make.center.equalToSuperview()
+            make.edges.equalToSuperview()
+        }
         
         closeBtn.snp.makeConstraints { make in
             make.top.right.equalToSuperview().inset(10)
             make.height.width.equalTo(20)
-        }
-        
-        contentView.addSubview(imageV)
-//        scrollView.addSubview(imageV)
-        
-        imageV.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
-            make.height.equalTo(Assets.screenHeight)
-            make.width.equalTo(Assets.screenWidth)
         }
     }
     
