@@ -6,4 +6,5 @@ class Assets {
       
     static var screenHeight: CGFloat { return UIScreen.main.bounds.height }
     
+    static var isPortrait: Bool { return UIDevice.current.orientation.isPortrait }
 }
