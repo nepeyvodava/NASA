@@ -35,7 +35,7 @@ class InfoViewController: UIViewController {
     private let imageV: UIImageView = {
         let imgV = UIImageView()
         imgV.contentMode = .scaleAspectFill
-        imgV.backgroundColor = .red
+        imgV.backgroundColor = .black
         imgV.layer.masksToBounds = true
         imgV.isUserInteractionEnabled = true
         
@@ -84,6 +84,7 @@ private extension InfoViewController {
         let originalVC = OriginalViewController()
         originalVC.configure(id: id, placeholder: placeholder)
         originalVC.modalPresentationStyle = .fullScreen
+        originalVC.modalTransitionStyle = .crossDissolve
         
         let scale = imageScale(for: imageV.image!, inImageViewAspectFill: imageV)
 
@@ -96,7 +97,7 @@ private extension InfoViewController {
             self.info.alpha = 0
             self.view.backgroundColor = .clear
         }) { _ in
-            self.present(originalVC, animated: false) {
+            self.present(originalVC, animated: true) {
                 self.imageV.transform = .identity
                 self.label.transform = .identity
                 self.closeBtn.transform = .identity
