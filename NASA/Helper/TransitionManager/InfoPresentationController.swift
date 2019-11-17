@@ -121,6 +121,7 @@ final class InfoPresentationController: UIPresentationController {
     
     override func containerViewDidLayoutSubviews() {
         super.containerViewDidLayoutSubviews()
+        presentedViewController.view.frame = self.frameOfPresentedViewInContainerView
         presentedViewController.view.setRoundCorners(corners: [.topLeft, .topRight], radius: 12)
     }
     
