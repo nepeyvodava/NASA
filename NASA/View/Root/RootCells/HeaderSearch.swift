@@ -32,6 +32,22 @@ private extension HeaderSearch {
         searchBar.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
+        
+        if #available(iOS 13, *)
+        {
+            let statusBarHeight: CGFloat = UIApplication.shared.statusBarFrame.size.height
+            let statusBar = UIView()
+            statusBar.backgroundColor = .systemBackground
+            addSubview(statusBar)
+            statusBar.snp.makeConstraints { make in
+                make.height.equalTo(statusBarHeight)
+                make.width.centerX.equalToSuperview()
+                make.bottom.equalTo(self.snp.top)
+            }
+        } else {
+            let statusBar = UIApplication.shared.value(forKeyPath: "statusBarWindow.statusBar") as? UIView
+            statusBar?.backgroundColor = .white
+        }
     }
     
 }

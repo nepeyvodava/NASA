@@ -23,26 +23,7 @@ class RootTableViewController: UITableViewController {
 
         setupView()
     }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
         
-        if #available(iOS 13, *)
-        {
-            guard let frame = UIApplication.shared.keyWindow?.windowScene?.statusBarManager?.statusBarFrame
-                else { return }
-            let statusBar = UIView(frame: frame)
-            statusBar.backgroundColor = UIColor.systemBackground
-            UIApplication.shared.keyWindow?.addSubview(statusBar)
-        } else {
-            let statusBar = UIApplication.shared.value(forKey: "statusBar") as! UIView
-               
-            if statusBar.responds(to: #selector(setter: UIView.backgroundColor)) {
-                statusBar.backgroundColor = self.tableView.backgroundColor }
-        }
-    }
-    
-    
     //MARK: - Table DataSource
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         guard let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: HeaderSearch.reuseID) as? HeaderSearch
