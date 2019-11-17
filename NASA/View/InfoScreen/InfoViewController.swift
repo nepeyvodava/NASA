@@ -35,7 +35,7 @@ class InfoViewController: UIViewController {
     private let imageV: UIImageView = {
         let imgV = UIImageView()
         imgV.contentMode = .scaleAspectFill
-        imgV.backgroundColor = .clear
+        imgV.backgroundColor = .red
         imgV.layer.masksToBounds = true
         imgV.isUserInteractionEnabled = true
         
@@ -71,6 +71,56 @@ class InfoViewController: UIViewController {
 }
 
 
+//MARK: - Actions
+private extension InfoViewController {
+    
+    @objc func closeBtnPressed(_ sender: UIButton) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    @objc func imageBtnPressed(_ sender: UIButton) {
+        guard let id = self.item?.nasa_id else { return }
+        let placeholder = imageV.image ?? UIImage()
+        let originalVC = OriginalViewController()
+        originalVC.configure(id: id, placeholder: placeholder)
+        originalVC.modalPresentationStyle = .fullScreen
+        
+        let scale = imageScale(for: imageV.image!, inImageViewAspectFill: imageV)
+
+        UIView.animate(withDuration: 1.0, animations: {
+            self.imageV.center = CGPoint(x: self.view.frame.width/2, y: self.view.frame.height/2 - 20)
+            self.imageV.transform = CGAffineTransform(scaleX: scale, y: scale)
+            self.label.transform = CGAffineTransform(translationX: 0, y: self.label.frame.height)
+            self.closeBtn.transform = CGAffineTransform(translationX: 0, y: -self.closeBtn.frame.height*2)
+            self.line.transform = CGAffineTransform(translationX: 0, y: -self.line.frame.height*3)
+            self.info.alpha = 0
+            self.view.backgroundColor = .clear
+        }) { _ in
+            self.present(originalVC, animated: false) {
+                self.imageV.transform = .identity
+                self.label.transform = .identity
+                self.closeBtn.transform = .identity
+                self.line.transform = .identity
+                self.info.alpha = 1
+            }
+        }
+    }
+    
+    func imageScale(for image: UIImage, inImageViewAspectFill imageView: UIImageView) -> CGFloat {
+        if Assets.isPortrait {
+            let imageRatio = image.size.width / image.size.height
+            let viewRatio = imageView.frame.width / imageView.frame.height
+            if imageRatio < viewRatio { return 1.0 } else { return (viewRatio / imageRatio) }
+        } else {
+            let imageRatio = image.size.width / image.size.height
+            let viewRatio = Assets.screenWidth / Assets.screenHeight
+            if imageRatio > viewRatio { return 1.0 } else { return (imageRatio / viewRatio) }
+        }
+    }
+    
+}
+
+
 //MARK: - setup
 private extension InfoViewController {
         
@@ -78,7 +128,7 @@ private extension InfoViewController {
         view.backgroundColor = .groupTableViewBackground
         title = "Details"
         imageV.addSubviews([imageButton, label])
-        view.addSubviews([imageV, info, line, closeBtn])
+        view.addSubviews([info, imageV, line, closeBtn])
         
         line.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
@@ -111,18 +161,6 @@ private extension InfoViewController {
             make.left.right.bottom.equalToSuperview()
         }
         
-    }
-    
-    @objc func closeBtnPressed(_ sender: UIButton) {
-        self.dismiss(animated: true, completion: nil)
-    }
-    
-    @objc func imageBtnPressed(_ sender: UIButton) {
-        guard let id = self.item?.nasa_id else { return }
-        let originalVC = OriginalViewController()
-        originalVC.configure(id: id)
-        originalVC.modalPresentationStyle = .popover
-        present(originalVC, animated: true, completion: nil)
     }
     
 }
