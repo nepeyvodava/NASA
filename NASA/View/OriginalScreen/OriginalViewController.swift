@@ -15,7 +15,8 @@ class OriginalViewController: UIViewController {
         return btn
     }()
     
-    func configure(id: String) {
+    func configure(id: String, placeholder: UIImage) {
+        imageV.imageView.image = placeholder
         provider.request(.fetchPhoto(id: id)) { [weak self] result in
             guard let self = self else { return }
 
@@ -25,7 +26,7 @@ class OriginalViewController: UIViewController {
                     let collection = try JSONDecoder().decode(PhotoResponse.self, from: response.data)
                     let pic = collection.original
                     self.imageV.imageView.kf.indicatorType = .activity
-                    self.imageV.imageView.kf.setImage(with: URL(string: pic))
+                    self.imageV.imageView.kf.setImage(with: URL(string: pic), placeholder: placeholder)
                 } catch(let error) {
                     self.showAlert(error: error)
                 }
