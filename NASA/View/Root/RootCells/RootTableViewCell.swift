@@ -29,10 +29,16 @@ class RootTableViewCell: UITableViewCell {
     
     private let label: UILabel = {
         let lbl = UILabel()
-        lbl.font = UIFont(name: "Georgia", size: 16)
+        lbl.font = UIFont(name: "Helvetica-Bold", size: 16)
+        lbl.textColor = .white
+        lbl.shadowColor = .black
+        lbl.shadowOffset = CGSize(width: 1, height: 1)
+        lbl.backgroundColor = UIColor.black.withAlphaComponent(0.3)
         lbl.textAlignment = .center
         lbl.lineBreakMode = .byWordWrapping
         lbl.numberOfLines = 2
+        lbl.layer.cornerRadius = 16
+        lbl.layer.masksToBounds = true
         return lbl
     }()
 
@@ -74,13 +80,11 @@ private extension RootTableViewCell {
         }
         
         imageV.snp.makeConstraints { make in
-            make.left.top.bottom.equalToSuperview().inset(offset)
-            make.width.equalTo(imageV.snp.height)
+            make.edges.equalToSuperview()
         }
         
         label.snp.makeConstraints { make in
-            make.left.equalTo(imageV.snp.right).offset(offset)
-            make.right.top.bottom.equalToSuperview().inset(offset)
+            make.edges.equalToSuperview()
         }
     }
     
