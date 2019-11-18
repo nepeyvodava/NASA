@@ -1,6 +1,5 @@
 import UIKit
 import Moya
-import SwiftyJSON
 
 class RootTableViewController: UITableViewController {
     
@@ -71,6 +70,10 @@ class RootTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
          return headerHeight
      }
+    
+    override func tableView(_ tableView: UITableView, willDisplayFooterView view: UIView, forSection section: Int) {
+        view.tintColor = UIColor.black.withAlphaComponent(0.3)
+    }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return rawHeight
@@ -149,6 +152,8 @@ private extension RootTableViewController {
 private extension RootTableViewController {
     
     func setupView() {
+        view.backgroundColor = UIColor(patternImage: UIImage(named: "stars") ?? UIImage())
+        
         tableView.separatorStyle = .none
         
         tableView.delegate = self
