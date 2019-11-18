@@ -21,6 +21,7 @@ class RootTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        searchData(q: "")
         setupView()
     }
         
@@ -34,13 +35,11 @@ class RootTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        guard data.isEmpty,
+        guard data.isEmpty, !searchBarIsEmpty(),
             let footer = tableView.dequeueReusableHeaderFooterView(withIdentifier: FooterRoot.reuseID) as? FooterRoot
             else { return UIView(frame: .zero) }
         
-        searchBarIsEmpty() ?
-            footer.configure(title: "Please, enter query.")
-            : footer.configure(title: "Sorry, nothing found. Enter another query.")
+        footer.configure(title: "Sorry, nothing found. Enter another query.")
         
         return footer
     }
