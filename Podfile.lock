@@ -8,13 +8,11 @@ PODS:
     - Result (~> 4.1)
   - Result (4.1.0)
   - SnapKit (5.0.1)
-  - SwiftyJSON (5.0.0)
 
 DEPENDENCIES:
   - Kingfisher
   - Moya
   - SnapKit (~> 5.0.0)
-  - SwiftyJSON
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -23,7 +21,6 @@ SPEC REPOS:
     - Moya
     - Result
     - SnapKit
-    - SwiftyJSON
 
 SPEC CHECKSUMS:
   Alamofire: afc3e7c6db61476cb45cdd23fed06bad03bbc321
@@ -31,8 +28,7 @@ SPEC CHECKSUMS:
   Moya: f4a4b80ff2f8a4ffc208dfb31cd91636622fee6e
   Result: bd966fac789cc6c1563440b348ab2598cc24d5c7
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
-  SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
 
-PODFILE CHECKSUM: 9c75fdd8576839148db822fe95091a8568ba88dd
+PODFILE CHECKSUM: 6df968f672be84c1651b4abd35a6889089a2c488
 
 COCOAPODS: 1.5.3
