@@ -6,7 +6,8 @@ class FooterRoot: UITableViewHeaderFooterView {
     
     private let label: UILabel = {
         let lbl = UILabel()
-        lbl.font = lbl.font.withSize(26)
+        lbl.font = UIFont(name: "Helvetica", size: 26)
+        lbl.textColor = .red
         lbl.textAlignment = .center
         lbl.lineBreakMode = .byWordWrapping
         lbl.numberOfLines = 2
