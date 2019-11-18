@@ -22,7 +22,7 @@ class InfoViewController: UIViewController {
 
     private let label: TitleLabel = {
         let lbl = TitleLabel(.clear, .black)
-        lbl.font = UIFont(name: "Georgia-Bold", size: 16)
+        lbl.font = UIFont(name: "Helvetica-Bold", size: 16)
         lbl.textColor = .white
         lbl.textAlignment = .left
         lbl.lineBreakMode = .byWordWrapping
@@ -51,6 +51,7 @@ class InfoViewController: UIViewController {
     
     private let info: UITextView = {
         let txtV = UITextView()
+        txtV.font = UIFont(name: "Helvetica", size: 16)
         txtV.isEditable = false
         return txtV
     }()
@@ -86,7 +87,7 @@ private extension InfoViewController {
         originalVC.modalPresentationStyle = .fullScreen
         originalVC.modalTransitionStyle = .crossDissolve
         
-        let scale = imageScale(for: imageV.image!, inImageViewAspectFill: imageV)
+        let scale = imageScale(for: imageV.image, inImageViewAspectFill: imageV)
 
         UIView.animate(withDuration: 1.0, animations: {
             self.imageV.center = CGPoint(x: self.view.frame.width/2, y: self.view.frame.height/2 - 20)
@@ -107,7 +108,8 @@ private extension InfoViewController {
         }
     }
     
-    func imageScale(for image: UIImage, inImageViewAspectFill imageView: UIImageView) -> CGFloat {
+    func imageScale(for image: UIImage?, inImageViewAspectFill imageView: UIImageView?) -> CGFloat {
+        guard let image = image, let imageView = imageView else { return 0 }
         if Assets.isPortrait {
             let imageRatio = image.size.width / image.size.height
             let viewRatio = imageView.frame.width / imageView.frame.height
